@@ -18,12 +18,14 @@ class MainActivity : FlutterActivity() {
     }
 
     private val scanEngine = ScanEngine(this)
+    private val paymentEngine = PaymentEngine(this)
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         val deviceInfoEngine = DeviceInfoEngine()
         val printerRemotePlugin = PrinterRemotePlugin()
         flutterEngine.plugins.add(scanEngine)
+        flutterEngine.plugins.add(paymentEngine)
         flutterEngine.plugins.add(deviceInfoEngine)
         flutterEngine.plugins.add(printerRemotePlugin)
 

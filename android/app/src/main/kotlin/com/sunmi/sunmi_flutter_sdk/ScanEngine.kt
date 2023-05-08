@@ -7,9 +7,7 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodChannel
 
 class ScanEngine(private val activity: MainActivity) : FlutterPlugin {
-
     private lateinit var context: Context
-
     private var methodResult: MethodChannel.Result ? = null
 
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {

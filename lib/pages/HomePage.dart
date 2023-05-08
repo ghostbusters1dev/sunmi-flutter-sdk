@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sun_mi_flutter_sdk/pages/paymet/paymentPage.dart';
 import 'package:sun_mi_flutter_sdk/pages/print/PrintPage.dart';
 import 'package:sun_mi_flutter_sdk/pages/scan/ScanPage.dart';
 import 'package:sun_mi_flutter_sdk/theme/colors.dart';
@@ -36,7 +37,11 @@ class HomePage extends StatelessWidget {
                   _tabItem('Scan', ColorHelper.security, () { _gotoScanPage(context); } ),
                   _tabItem('Emv', ColorHelper.emv, () { } ),
                 ]
-            )
+            ),   Row(
+                children:[
+                  _tabItem('Payment', Colors.pink, () { _gotoPaymentPage(context); } ),
+                ]
+            ),
           ],
         ),
       ),
@@ -58,6 +63,11 @@ class HomePage extends StatelessWidget {
   _gotoScanPage(context) {
     Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => const ScanPage(), )
+    );
+  }
+ _gotoPaymentPage(context) {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const PaymentPage(), )
     );
   }
 
