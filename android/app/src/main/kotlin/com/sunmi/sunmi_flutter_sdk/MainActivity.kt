@@ -3,6 +3,7 @@ package com.sunmi.sunmi_flutter_sdk
 import android.content.Intent
 import android.util.Log
 import com.sunmi.pay.hardware.aidlv2.system.BasicOptV2
+import com.sunmi.pay.hardware.aidlv2.readcard.ReadCardOptV2
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugins.GeneratedPluginRegistrant
@@ -13,6 +14,7 @@ class MainActivity : FlutterActivity() {
     companion object {
          const val TAG = "sun-mi-flutter"
         var basicOptV2: BasicOptV2 ? = null
+        var readCardOptV2: ReadCardOptV2? = null
     }
 
     private val scanEngine = ScanEngine(this)
@@ -38,6 +40,7 @@ class MainActivity : FlutterActivity() {
 
         override fun onConnectPaySDK() {
             basicOptV2 = SunmiPayKernel.getInstance().mBasicOptV2
+            readCardOptV2 = SunmiPayKernel.getInstance().mReadCardOptV2
         }
 
         override fun onDisconnectPaySDK() {
