@@ -7,9 +7,12 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodChannel
 import com.sunmi.pay.hardware.aidlv2.readcard.ReadCardOptV2
 import sunmi.paylib.SunmiPayKernel
+import android.os.Bundle
+
 
 
 class PaymentEngine(private val activity: MainActivity) : FlutterPlugin {
+
 
     private lateinit var context: Context
     private var methodResult: MethodChannel.Result? = null
@@ -32,6 +35,7 @@ class PaymentEngine(private val activity: MainActivity) : FlutterPlugin {
     }
 
     private fun startScan() {
+
         var mSMPayKernel: SunmiPayKernel? = null
         mSMPayKernel = SunmiPayKernel.getInstance()
         mSMPayKernel!!.initPaySDK(context, object : SunmiPayKernel.ConnectCallback {
@@ -43,11 +47,28 @@ class PaymentEngine(private val activity: MainActivity) : FlutterPlugin {
                     BaseApp.mPinPadOptV2 = mSMPayKernel!!.mPinPadOptV2
                     BaseApp.mBasicOptV2 = mSMPayKernel!!.mBasicOptV2
                     BaseApp.mSecurityOptV2 = mSMPayKernel!!.mSecurityOptV2
+
+
+
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
+
             }
         })
+
+        val mEMVOptV2 = mSMPayKernel?.mEMVOptV2
+        val mReadCardOptV2 = mSMPayKernel?.mReadCardOptV2
+
+
+
+        try {
+            mEMVOptV2?.abortTransactProcess()
+            mEMVOptV2?.initEmvProcess()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
 

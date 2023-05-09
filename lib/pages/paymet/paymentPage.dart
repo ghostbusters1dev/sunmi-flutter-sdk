@@ -56,6 +56,7 @@ class ScanState extends State<ScanWidget> {
   _startPayment() {
     PaymentEngine.startPayment().then(
             (map) => {
+              print(map.toString()),
           setState(
                   () => { _update(map) }
           )

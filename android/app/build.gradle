@@ -53,6 +53,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true // enable view binding
+        dataBinding true // enable data binding
+    }
 }
 
 flutter {
@@ -62,6 +66,6 @@ flutter {
 dependencies {
     implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
     implementation 'com.sunmi:printerlibrary:1.0.14'
+
 }
